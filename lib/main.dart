@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prestamos/src/pages/home.dart';
+import 'package:prestamos/src/router/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,10 +14,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: appName,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pinkAccent),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
         useMaterial3: true,
       ),
-      home: const Home()
+      routes: routes(context),
+      initialRoute: '/',
     );
   }
 }

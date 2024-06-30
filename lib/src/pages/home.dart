@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:prestamos/src/components/bottom_sheet_add.dart';
 import 'package:prestamos/src/utils/constants.dart';
 
 class Home extends StatelessWidget {
@@ -16,19 +15,7 @@ class Home extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            showModalBottomSheet(
-                context: context,
-                builder: (BuildContext context) {
-                  return Padding(
-                      padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: const SizedBox(
-                        child: BottomSheetAdd(),
-                      ));
-                },
-                isDismissible: false,
-                enableDrag: false,
-                isScrollControlled: true);
+            Navigator.pushNamed(context, '/add');
           },
           child: const Icon(Icons.add),
         ));
