@@ -6,6 +6,6 @@ import 'package:prestamos/src/pages/home.dart';
 Map<String, WidgetBuilder> routes(BuildContext context) {
   return {
     '/': (context) => const Home(),
-    '/add': (context) => const AddNew(),
+    '/add': (context) => AddNew(),
   };
 }

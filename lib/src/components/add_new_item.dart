@@ -1,30 +1,49 @@
 import 'package:flutter/material.dart';
 
-class AddNewItem extends StatelessWidget {
-  const AddNewItem({super.key});
+class AddNewItem extends StatefulWidget {
+  final GlobalKey<FormState> formKey;
+  const AddNewItem({super.key, required this.formKey});
 
   @override
+  State<AddNewItem> createState() => _AddNewItemState();
+}
+
+class _AddNewItemState extends State<AddNewItem> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      width: double.infinity,
-      color: Colors.redAccent,
-      child: const Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          TextField(
-            decoration: InputDecoration(
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          child: TextFormField(
+            decoration: const InputDecoration(
                 border: OutlineInputBorder(), labelText: 'Producto'),
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return 'Por favor, ingrese un producto';
+              }
+              return null;
+            },
           ),
-          SizedBox(
-            width: 100.0,
-            child: TextField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'Precio'),
-            ),
-          )
-        ],
-      ),
+        ),
+        const SizedBox(
+          width: 8.0,
+        ),
+        SizedBox(
+          width: 100.0,
+          child: TextFormField(
+            decoration: const InputDecoration(
+                border: OutlineInputBorder(), labelText: 'Precio'),
+            keyboardType: TextInputType.number,
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return 'Por favor, ingrese un precio válido.';
+              }
+              return null;
+            },
+          ),
+        )
+      ],
     );
   }
 }
